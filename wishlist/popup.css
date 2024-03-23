@@ -1,0 +1,49 @@
+body {
+    font-family: Arial, sans-serif;
+    padding: 20px;
+    width: 400px;
+}
+
+h1 {
+    font-size: 20px;
+    color: #333;
+}
+
+p {
+    font-size: 14px;
+    color: #666;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-right: 10px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+#categories {
+    margin-bottom: 20px;
+}
+
+#settings {
+    margin-bottom: 20px;
+}
+
+#links {
+    margin-top: 20px;
+}
+
+#favoriteButton {
+    margin-bottom: 10px; /* Установите необходимое значение отступа */
+}
+
+#ignoreButton {
+    margin-top: 10px; /* Установите необходимое значение отступа */
+}

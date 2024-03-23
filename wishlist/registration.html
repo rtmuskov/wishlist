@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="registration.css">
+</head>
+<body>
+    <h2>Регистрация</h2>
+    <form id="registrationForm">
+        <label for="username">Имя пользователя:</label><br>
+        <input type="text" id="username" name="username" required><br>
+        <label for="email">Email:</label><br>
+        <input type="email" id="email" name="email" required><br>
+        <label for="password">Пароль:</label><br>
+        <input type="password" id="password" name="password" required><br><br>
+        <button type="submit">Зарегистрироваться</button>
+    </form>
+    <p id="registrationMessage"></p>
+
+    <!-- Подключение файла users.js -->
+    <script src="users.js"></script>
+    <!-- Подключение файла registration.js -->
+    <script src="registration.js"></script>
+</body>
+</html>
