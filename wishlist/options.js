@@ -1,23 +1,29 @@
 document.addEventListener('DOMContentLoaded', function() {
-    var favProductCheckbox = document.getElementById('favProduct');
-    var oneTimeProductCheckbox = document.getElementById('oneTimeProduct');
-    var ignoreProductCheckbox = document.getElementById('ignoreProduct');
-
-    // Загрузка текущих настроек из хранилища и установка значений чекбоксов
-    chrome.storage.sync.get(['favProduct', 'oneTimeProduct', 'ignoreProduct'], function(result) {
-        favProductCheckbox.checked = result.favProduct || false;
-        oneTimeProductCheckbox.checked = result.oneTimeProduct || false;
-        ignoreProductCheckbox.checked = result.ignoreProduct || false;
+    // Обработчик события для кнопки "Добавить в избранное"
+    document.getElementById('favProduct').addEventListener('click', function() {
+        addToCartWithUrl();
     });
 
-    // Сохранение измененных настроек
-    document.getElementById('saveButton').addEventListener('click', function() {
-        chrome.storage.sync.set({
-            favProduct: favProductCheckbox.checked,
-            oneTimeProduct: oneTimeProductCheckbox.checked,
-            ignoreProduct: ignoreProductCheckbox.checked
-        }, function() {
-            alert('Settings saved!');
+    // Обработчик события для кнопки "Добавить один раз"
+    document.getElementById('oneTimeProduct').addEventListener('click', function() {
+        addToCartWithUrl();
+    });
+
+    // Обработчик события для кнопки "Игнорировать"
+    document.getElementById('ignoreProduct').addEventListener('click', function() {
+        addToCartWithUrl();
+    });
+
+    // Функция для добавления текущего URL в корзину расширения
+    function addToCartWithUrl() {
+        chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
+            let url = tabs[0].url; // Получаем URL текущей вкладки
+            console.log('URL текущей страницы:', url);
+
+            // Сохраняем URL в локальном хранилище
+            chrome.storage.local.set({ cartUrl: url }, function() {
+                console.log('URL добавлен в корзину:', url);
+            });
         });
-    });
+    }
 });

@@ -47,3 +47,24 @@ button:hover {
 #ignoreButton {
     margin-top: 10px; /* Установите необходимое значение отступа */
 }
+
+#cartPopupButton {
+    display: none;
+    margin-top: 10px; /* Установите необходимое значение отступа */
+    margin-bottom: 10px; /* Установите необходимое значение отступа */
+    margin-right: auto;
+    
+}
+#mainLogoutButton {
+    margin-left: auto;
+}
+#profile {
+    position: relative; /* Установка родительского контейнера для позиционирования абсолютных элементов */
+}
+
+#cartPopupButton {
+    position: absolute; /* Позиционируем кнопку абсолютно */
+    top: 25px; /* Устанавливаем расстояние от верхнего края родительского контейнера */
+    right: 140px; /* Устанавливаем расстояние от правого края родительского контейнера */
+    margin-left: 10px; /* Добавляем отступ между кнопками */
+}
