@@ -21,7 +21,7 @@ input[type="password"] {
 }
 
 button {
-    background-color: #002beb;
+    background-color: #4CAF50;
     color: white;
     padding: 10px 20px;
     border: none;
@@ -30,10 +30,10 @@ button {
 }
 
 button:hover {
-    background-color: #3765ff;
+    background-color: #45a049;
 }
 
 #registrationMessage {
     margin-top: 10px;
-    color: rgb(16, 193, 0);
+    color: red;
 }

@@ -44,10 +44,12 @@ document.addEventListener('DOMContentLoaded', function() {
             let emailParagraph = document.createElement('p');
             emailParagraph.textContent = 'Email: ' + profile.email;
             profileInfoContainer.appendChild(emailParagraph);
-
-
-            
         }
+
+        // Если профиль пользователя не найден
+        else {
+             document.getElementById('mainLogoutButton').style.display = 'none';
+	}
     });
 
 
@@ -56,12 +58,23 @@ document.addEventListener('DOMContentLoaded', function() {
     document.getElementById('profileButton').addEventListener('click', function() {
         openRegistrationWindow();
     });
+
+    // Обработчик для кнопки "Выйти из профиля"
+    document.getElementById('mainLogoutButton').addEventListener('click', function() {
+        openLogoutWindow();
+    });
 });
 
 // Функция открытия окна регистрации
 function openRegistrationWindow() {
     let registrationUrl = chrome.runtime.getURL('registration.html');
     window.open(registrationUrl, '_blank', 'width=400,height=400');
+}
+
+// Функция открытия окна выхода из профиля
+function openLogoutWindow() {
+    let logoutUrl = chrome.runtime.getURL('logout.html');
+    window.open(logoutUrl, '_blank', 'width=400,height=400');
 }
 
 // Функция добавления товара в выбранную категорию
