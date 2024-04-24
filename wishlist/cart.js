@@ -14,26 +14,30 @@ function displayURLs(category, urls) {
     let list = document.getElementById(category + 'List');
     list.innerHTML = ''; // Очищаем список перед добавлением URL
 
-    urls.forEach(function(url) {
-        let listItem = document.createElement('li');
-        let link = document.createElement('a');
-        link.href = url;
-        link.textContent = url;
-        link.target = "_blank"; // Открывать ссылку в новой вкладке
-        
-        let deleteIcon = document.createElement('img');
-        deleteIcon.src = "/images/del.png"; // Путь к изображению корзины
-        deleteIcon.alt = "Delete";
-        deleteIcon.classList.add('delete-icon');
-        deleteIcon.addEventListener('click', function() {
-            deleteURL(category, url);
-        });
+    // Проверяем, существует ли массив urls
+    if (urls && urls.length > 0) {
+        urls.forEach(function(url) {
+            let listItem = document.createElement('li');
+            let link = document.createElement('a');
+            link.href = url;
+            link.textContent = url;
+            link.target = "_blank"; // Открывать ссылку в новой вкладке
+            
+            let deleteIcon = document.createElement('img');
+            deleteIcon.src = "/images/del.png"; // Путь к изображению корзины
+            deleteIcon.alt = "Delete";
+            deleteIcon.classList.add('delete-icon');
+            deleteIcon.addEventListener('click', function() {
+                deleteURL(category, url);
+            });
 
-        listItem.appendChild(link);
-        listItem.appendChild(deleteIcon);
-        list.appendChild(listItem);
-    });
+            listItem.appendChild(link);
+            listItem.appendChild(deleteIcon);
+            list.appendChild(listItem);
+        });
+    }
 }
+
 
 function deleteURL(category, url) {
     chrome.storage.sync.get(category, function(result) {
