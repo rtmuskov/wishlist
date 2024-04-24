@@ -7,22 +7,20 @@
     <link rel="stylesheet" href="cart.css">
 </head>
 <body>
-    <h2>Избранное</h2>
-    <ul id="favoritesList">
-        <!-- Здесь будут отображаться избранные ссылки -->
-    </ul>
-
-    <h2>Одноразовая покупка</h2>
-    <ul id="oneTimeList">
-        <!-- Здесь будут отображаться ссылки для одноразовой покупки -->
-    </ul>
-
-    <h2>Игнорирование</h2>
-    <ul id="ignoreList">
-        <!-- Здесь будут отображаться игнорируемые ссылки -->
-    </ul>
-
-    <button id="clearButton" class="button">Очистить корзину</button>
+    <h1>Корзина</h1>
+    <div id="favoritesSection">
+        <h2>Избранное</h2>
+        <ul id="favoritesList"></ul>
+    </div>
+    <div id="oneTimeSection">
+        <h2>Один раз</h2>
+        <ul id="oneTimeList"></ul>
+    </div>
+    <div id="ignoreSection">
+        <h2>Игнорировать</h2>
+        <ul id="ignoreList"></ul>
+    </div>
+    <button id="clearCartButton">Очистить  всю корзину</button>
 
     <script src="cart.js"></script>
 </body>

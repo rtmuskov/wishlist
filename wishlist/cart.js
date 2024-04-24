@@ -1,10 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
     displaySavedURLs();
-
-    // Добавляем обработчик клика на кнопку "Очистить корзину"
-    document.getElementById('clearButton').addEventListener('click', function() {
-        clearCart();
-    });
 });
 
 function displaySavedURLs() {
@@ -25,19 +20,45 @@ function displayURLs(category, urls) {
         link.href = url;
         link.textContent = url;
         link.target = "_blank"; // Открывать ссылку в новой вкладке
+        
+        let deleteIcon = document.createElement('img');
+        deleteIcon.src = "/images/del.png"; // Путь к изображению корзины
+        deleteIcon.alt = "Delete";
+        deleteIcon.classList.add('delete-icon');
+        deleteIcon.addEventListener('click', function() {
+            deleteURL(category, url);
+        });
+
         listItem.appendChild(link);
+        listItem.appendChild(deleteIcon);
         list.appendChild(listItem);
     });
 }
 
+function deleteURL(category, url) {
+    chrome.storage.sync.get(category, function(result) {
+        let updatedURLs = result[category].filter(function(item) {
+            return item !== url;
+        });
+        chrome.storage.sync.set({ [category]: updatedURLs }, function() {
+            console.log('URL удален из категории', category);
+            displaySavedURLs();
+        });
+    });
+}
 
-// Функция для очистки корзины
+document.addEventListener('DOMContentLoaded', function() {
+    displaySavedURLs();
+
+    // Обработчик для кнопки "Очистить корзину"
+    document.getElementById('clearCartButton').addEventListener('click', function() {
+        clearCart();
+    });
+});
+
 function clearCart() {
     chrome.storage.sync.clear(function() {
-        // Очищаем списки после удаления данных из хранилища
-        document.getElementById('favoritesList').innerHTML = '';
-        document.getElementById('oneTimeList').innerHTML = '';
-        document.getElementById('ignoreList').innerHTML = '';
         console.log('Корзина очищена');
+        displaySavedURLs();
     });
 }

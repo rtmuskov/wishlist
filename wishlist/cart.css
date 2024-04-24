@@ -31,3 +31,9 @@ button {
 button:hover {
     background-color: #45a049; /* Темно-зеленый цвет при наведении */
 }
+.delete-icon {
+    width: 16px;
+    height: 16px;
+    margin-left: 5px;
+    cursor: pointer;
+}

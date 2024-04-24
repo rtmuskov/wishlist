@@ -71,10 +71,6 @@ document.addEventListener('DOMContentLoaded', function() {
         openCartPopup(); // Функция для открытия окна корзины
     });
 
-    // Обработчик для кнопки "Корзина" в окне попапа
-    document.getElementById('cartPopupButton').addEventListener('click', function() {
-        openCartPopup(); // Функция для открытия окна корзины
-    });
 
      // Получаем данные о профиле пользователя из локального хранилища
      chrome.storage.local.get('profile', function(result) {
