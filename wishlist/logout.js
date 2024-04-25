@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     // Выход из профиля
     document.getElementById('logoutButton').addEventListener('click', function() {
-        chrome.storage.local.remove('profile', function() {
+        chrome.storage.sync.remove('profile', function() {
             var error = chrome.runtime.lastError;
             if (error) {
                 console.error(error);

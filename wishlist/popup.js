@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
     // Проверяем наличие профиля пользователя при загрузке страницы
-    chrome.storage.local.get('profile', function(result) {
+    chrome.storage.sync.get('profile', function(result) {
         // Если профиль пользователя найден
         if (result.profile) {
             let profile = result.profile;
@@ -51,6 +51,9 @@ document.addEventListener('DOMContentLoaded', function() {
         // Если профиль пользователя не найден
         else {
              document.getElementById('mainLogoutButton').style.display = 'none';
+             document.getElementById('favoriteButton').style.display = 'none';
+             document.getElementById('oneTimeButton').style.display = 'none';
+             document.getElementById('ignoreButton').style.display = 'none';
 	}
     });
 
@@ -73,7 +76,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
      // Получаем данные о профиле пользователя из локального хранилища
-     chrome.storage.local.get('profile', function(result) {
+     chrome.storage.sync.get('profile', function(result) {
         if (result.profile) {
             // Если профиль пользователя найден, отображаем кнопку "Корзина"
             document.getElementById('cartPopupButton').style.display = 'block';

@@ -17,7 +17,7 @@ function handleSubmit(event) {
         };
 
         // Сохраняем профиль в локальное хранилище
-        chrome.storage.local.set({ profile: profile }, function() {
+        chrome.storage.sync.set({ profile: profile }, function() {
             console.log('Профиль сохранен:', profile);
             document.getElementById('registrationMessage').textContent = 'Профиль успешно сохранен!';
             
@@ -31,7 +31,7 @@ function handleSubmit(event) {
 }
 
 // Проверяем наличие профиля пользователя при загрузке страницы
-chrome.storage.local.get('profile', function(result) {
+chrome.storage.sync.get('profile', function(result) {
     // Если профиль пользователя найден
     if (result.profile) {
         let profile = result.profile;
