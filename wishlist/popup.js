@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
             // Скрываем кнопку "Войти / Зарегистрироваться" и надпись "Профиль"
              document.getElementById('profileButton').style.display = 'none';
+             document.getElementById('vkProfileButton').style.display = 'none';
 
             // Отображаем данные профиля под надписью "Профиль"
             let profileInfoContainer = document.getElementById('profileInfo');
